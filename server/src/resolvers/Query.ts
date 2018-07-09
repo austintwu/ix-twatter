@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { getUserId, Context } from '../utils'
 import { createTweet } from './Mutation/createTweet';
 
@@ -11,5 +12,19 @@ export const Query = {
   },
   tweet(parent, args, ctx: Context, info) {
     return ctx.db.query.tweet({ where: {id: args.id}}, info)
+=======
+import { Context } from "../utils"
+
+export default {
+  viewer: () => ({}),
+  tweets: async (parent, args, ctx: Context, info) => {
+    console.log({ info })
+    return ctx.db.query.tweets(
+      {
+        ...args
+      },
+      info
+    )
+>>>>>>> upstream/master
   }
 }

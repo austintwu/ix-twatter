@@ -1,4 +1,4 @@
-# ix-twatter
+# ix-tweeter
 
 <p align="center">
   <img src="screens/3251932690_21d32c07e9_o.png" alt="Bundle Analyzer example">
@@ -53,8 +53,6 @@ Go ahead and click "ADD A SERVICE".
 
 You should now see instructions on how to add a prisma service. If you have not done so already, run `npm install -g prisma` to install prisma globally on your machine.
 
-Use your arrow keys and pick "Demo Server".
-
 
 In the second box you should see a `prisma login` command that you should copy. Go ahead and copy that command and paste it in your terminal to login:
 
@@ -70,6 +68,9 @@ Next step is to run `prisma init`. Make sure you are still in your `/prisma` dir
 prisma init
 ```
 
+Use your arrow keys and pick "Demo Server".
+
+
 By now you should see this:
 
 ![alt text](screens/prisma-init.png "Logo Title Text 1")
@@ -82,7 +83,7 @@ Now yous hould be presented with a series of questions to setup your project.
 
 I have answered the following:
 
-`? Choose a name for your service (prisma): twatter`
+`? Choose a name for your service (prisma): tweeter`
 
 `? Choose a name for your stage (dev)` (simply click enter to have the default one get selected, `dev`).
 
@@ -124,6 +125,17 @@ Run `prisma deploy` while being inside your /prisma folder to deploy the changes
 
 Now go back a directory up to your server by running `cd ..` and run `yarn dev` and you should see your playground 🍾
 
+
+P.S: Make sure to copy your prisma endpoint that you can find in `prisma/prisma.yml` and paste it as the value for `PRISMA_ENDPOINT` in your .env file. 
+
+Your .env file should look something like this as a result:
+
+```sh
+PRISMA_ENDPOINT="https://eu1.prisma.sh/public-grovelantern-494/ix-tweeter/dev"
+PRISMA_SECRET="mysecret123"
+APP_SECRET="jwtsecret123"
+```
+except, `PRISMA_ENDPOINT` will be yours, the one you found in prisma.yml.
 
 ### Get the front-end up and running
 
@@ -240,7 +252,7 @@ type User {
 
 As you can see, we have two mutations here. `signup` and `login`. They both take an email and a password and return an `AuthPayload` we've defined. This is what tells graphql what our mutations will look like, what parameters they take etc. We will now look at their _implementations_.
 
-To see that, go to `src/Mutation/auth.ts`. Here's what it looks like:
+To see that, go to `src/resolvers/Mutation/auth.ts`. Here's what it looks like:
 
 ```ts
 import * as bcrypt from "bcryptjs";
@@ -317,7 +329,7 @@ All we are doing is simply passing the arguments, `email & password` and spreadi
 
 ```ts
 const user = await ctx.db.mutation.createUser({
-  data: { email: args.email, password: args.password }
+  data: { email: args.email, password: password }
 });
 ```
 
@@ -379,7 +391,7 @@ Now your turn!
 1.  Here's how creating a tweet would look like in your resolvers:
 
 ```ts
-const user = await ctx.db.mutation.createTweet({
+const tweet = await ctx.db.mutation.createTweet({
   data: {
     text: args.text,
     author: {
@@ -388,7 +400,7 @@ const user = await ctx.db.mutation.createTweet({
       }
     }
   }
-});
+}, info);
 ```
 
 2.  Make a feed query that returns a list of all the tweets (this is our twitter feed!)
