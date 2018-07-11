@@ -14,7 +14,6 @@ const server = new GraphQLServer({
   resolvers,
   context: req => ({
     ...req,
-<<<<<<< HEAD
     db: new Prisma({
       endpoint: process.env.PRISMA_ENDPOINT, // the endpoint of the Prisma API (value set in `.env`)
       secret: process.env.PRISMA_SECRET,
@@ -22,10 +21,6 @@ const server = new GraphQLServer({
       // secret: process.env.PRISMA_SECRET, // only needed if specified in `database/prisma.yml` (value set in `.env`)
     }),
   }),
-=======
-    db
-  })
->>>>>>> upstream/master
 })
 
 server.start(() => console.log(`Server is running on http://localhost:4000`))

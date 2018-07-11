@@ -14,7 +14,9 @@
     "graphql-tools": "^3.0.5",
     "graphql-yoga": "1.14.12",
     "jsonwebtoken": "8.3.0",
-    "prisma-binding": "^2.1.0"
+    "prisma-binding": "^2.1.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "prettier": {
     "semi": false
