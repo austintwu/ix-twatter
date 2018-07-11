@@ -1,3 +1,24 @@
+# Changes to get rid of annoying lint rules
+
+1. Replace the entire contents of `tslint.json` with:
+```json
+{
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "src/**/**/*.tsx",
+      "src/**/**/*.ts",
+      "src/**/*.tsx",
+      "src/*.tsx"
+    ]
+  },
+  "rules": {}
+}
+```
+
+2. Replace the entire contents of `tsconfig.json` with: 
+```json
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -42,3 +63,4 @@
     "src/setupTests.ts"
   ]
 }
+```

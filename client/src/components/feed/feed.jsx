@@ -34,6 +34,7 @@ const GET_TWEETS = gql`
 // }
 
 class Feed extends React.Component {
+
   render() {
     return (
       <div>
