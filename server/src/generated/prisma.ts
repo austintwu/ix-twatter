@@ -413,7 +413,7 @@ input TweetWhereUniqueInput {
 type User implements Node {
   id: ID!
   email: String!
-  username: String!
+  username: String
   password: String!
   name: String!
   picture: String
@@ -432,7 +432,7 @@ type UserConnection {
 
 input UserCreateInput {
   email: String!
-  username: String!
+  username: String
   password: String!
   name: String!
   picture: String
@@ -446,7 +446,7 @@ input UserCreateOneWithoutTweetsInput {
 
 input UserCreateWithoutTweetsInput {
   email: String!
-  username: String!
+  username: String
   password: String!
   name: String!
   picture: String
@@ -483,7 +483,7 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   email: String!
-  username: String!
+  username: String
   password: String!
   name: String!
   picture: String
@@ -1066,7 +1066,7 @@ export interface TweetUpdateWithoutAuthorDataInput {
 
 export interface UserCreateInput {
   email: String
-  username: String
+  username?: String
   password: String
   name: String
   picture?: String
@@ -1075,7 +1075,7 @@ export interface UserCreateInput {
 
 export interface UserCreateWithoutTweetsInput {
   email: String
-  username: String
+  username?: String
   password: String
   name: String
   picture?: String
@@ -1137,7 +1137,7 @@ export interface Node {
 export interface UserPreviousValues {
   id: ID_Output
   email: String
-  username: String
+  username?: String
   password: String
   name: String
   picture?: String
@@ -1199,7 +1199,7 @@ export interface UserEdge {
 export interface User extends Node {
   id: ID_Output
   email: String
-  username: String
+  username?: String
   password: String
   name: String
   picture?: String
